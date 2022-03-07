@@ -23,24 +23,27 @@ let n =  number if groups
 
     The time complexity would be O(n*m)
     The space complxity is also the same
+
+    NB
+    The time complexity for string concatenation
 """
 
 def uncompressed(s):
     i = 0
     j = 0
-    res = ""
+    res = []
      
     while j < len(s):
         if not s[j].isalpha():
             j += 1
         else:
             if not s[i:j]:
-                res += s[j]
+                res.append(s[j])
             else:
-                res += s[j] * int(s[i:j]) 
+                res.append(s[j] * int(s[i:j]))
             j += 1
             i = j
-    return res
+    return "".join(res)
 
 print(uncompressed("e3ff"))
         
