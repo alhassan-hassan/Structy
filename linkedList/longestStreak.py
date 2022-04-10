@@ -1,7 +1,7 @@
 class Node:
       def __init__(self, val):
-    self.val = val
-    self.next = None
+        self.val = val
+        self.next = None
 
 def longest_streak(head):
   if head is None:
