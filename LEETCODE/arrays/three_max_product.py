@@ -1,5 +1,5 @@
 class Solution:
-    def maximumProduct(self, nums: List[int]) -> int:
+    def maximumProduct(self, nums) -> int:
         print(nums)
         nums.sort()
         max_ = 1

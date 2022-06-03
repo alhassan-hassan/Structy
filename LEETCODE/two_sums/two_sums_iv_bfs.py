@@ -20,8 +20,7 @@ class Solution:
                 return True
             
             dic[cur.val] = "T"
-            print("sap")
-            
+
             if cur.left:
                 dq.append(cur.left)
             if cur.right:
