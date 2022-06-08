@@ -1,4 +1,4 @@
-#total = sum([int(i) for i in lst if type(i)== int or i.isdigit()])
+total = sum([int(i) for i in [1,2,4,5] if type(i)== int or i.isdigit()])
 class Solution:
     def digitSum(self, s, k):
         
@@ -22,6 +22,6 @@ class Solution:
             tempt = sec
             print(tempt)
             
-        return tempt
+        return tempt 
                     
          
