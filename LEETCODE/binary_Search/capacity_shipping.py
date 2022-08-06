@@ -1,5 +1,5 @@
 class Solution:
-    def shipWithinDays(self, weights: List[int], days: int) -> int:
+    def shipWithinDays(self, weights, days):
         def isShippable(capacity):
             dayCount, curCapacity = 1, 0
             
