@@ -1,7 +1,7 @@
 class Solution:
-    def longestOnes(self, nums):
+    def longestOnes(self, nums, k):
         """
-        [0, 0 , 1 , 1 , 0 , 0 , 1 , 1 , 1 , 0 , 1 , 1 , 0 , 0 , 0 , 1 , 1 , 1 , 1]   - k = 3
+            [0, 0 , 1 , 1 , 0 , 0 , 1 , 1 , 1 , 0 , 1 , 1 , 0 , 0 , 0 , 1 , 1 , 1 , 1]   - k = 3
                                 *
                                                                 *
         """
