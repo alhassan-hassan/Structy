@@ -1,27 +1,19 @@
 class BrowserHistory:
     def __init__(self, homepage: str):
-        self.history = list()
-        self.curpage = 1
-        self.history.append(homepage)
+        self.browser = [homepage]
+        self.page = 1
 
     def visit(self, url: str) -> None:
-        self.history = self.history[:self.curpage]
-        self.history.append(url)
-        self.curpage += 1
-
-    def back(self, steps: int) -> str:
-        if self.curpage - steps >= 1:
-            self.curpage -= steps
-            return self.history[self.curpage - 1]
-        else:
-            self.curpage = 1
+        self.browser = self.browser[0 : self.page]
+        self.browser.append(url)
+        self.page += 1
         
-            return self.history[self.curpage - 1]
+    def back(self, steps: int) -> str:
+        valid = self.page - steps
+        self.page = 1 if valid < 1 else self.page - steps
+        return self.browser[self.page - 1]
 
     def forward(self, steps: int) -> str:
-        if self.curpage + steps > len(self.history):
-            self.curpage = len(self.history)
-            return self.history[self.curpage - 1]
-        else:
-            self.curpage += steps
-            return self.history[self.curpage - 1]
+        movement = self.page + steps
+        self.page = movement if movement <= len(self.browser) else len(self.browser)
+        return self.browser[self.page - 1]
