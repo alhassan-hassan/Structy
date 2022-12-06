@@ -1,11 +1,9 @@
 class Solution:
     def decodeString(self, s: str) -> str:
-        ["3[a"]
-        
+        # Use a stack to keep track of everything
         stack = []
-        res = []
-        
         for char in s:
+            # If a value is a closing brace, I will just uncompress the previous chars
             if char != "]":
                 stack.append(char)
                 
@@ -23,3 +21,4 @@ class Solution:
                 stack.append(unzipped)
                     
         return "".join(stack)
+        
