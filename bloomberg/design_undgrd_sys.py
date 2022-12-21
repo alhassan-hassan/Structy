@@ -1,5 +1,4 @@
 import collections
-
 class UndergroundSystem:
 
     def __init__(self):
@@ -10,17 +9,18 @@ class UndergroundSystem:
         self.checkIns[id] = [stationName, t]
 
     def checkOut(self, id: int, stationName: str, t: int) -> None:
-        key = self.checkIns[id][0] +"->"+ stationName
-        update = t - self.checkIns[id][1]
-        print(key)
+        station, time = self.checkIns.pop(id)
+        key = (station,stationName)
+        update = t - time
+
         self.checkOuts[key][0] += update
         self.checkOuts[key][1] += 1
         
     def getAverageTime(self, startStation: str, endStation: str) -> float:
-        key = startStation +"->"+ endStation
-        average = self.checkOuts[key][0] / self.checkOuts[key][1]
+        key = (startStation,endStation)
+        journeys, trips = self.checkOuts[key]
         
-        return average
+        return journeys / trips
         
 
 

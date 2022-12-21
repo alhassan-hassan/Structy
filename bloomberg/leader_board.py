@@ -11,10 +11,10 @@ class Leaderboard:
     def top(self, K: int) -> int:
         heap = []
         for x in self.board.values():
-            heapq.heappush(heap, x)
+            collections.heapq.heappush(heap, x)
             
             if len(heap) > K:
-                heapq.heappop(heap)
+                collections.heapq.heappop(heap)
         
         sum_ = 0
         
