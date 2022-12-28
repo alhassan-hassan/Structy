@@ -1,3 +1,4 @@
+import heapq
 import collections
 class Leaderboard:
 
@@ -11,10 +12,10 @@ class Leaderboard:
     def top(self, K: int) -> int:
         heap = []
         for x in self.board.values():
-            collections.heapq.heappush(heap, x)
+            heapq.heappush(heap, x)
             
             if len(heap) > K:
-                collections.heapq.heappop(heap)
+                heapq.heappop(heap)
         
         sum_ = 0
         
