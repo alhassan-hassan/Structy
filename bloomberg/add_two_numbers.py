@@ -4,32 +4,64 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
+
+    # OPTION 1
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        def list_to_stack(head):
-            stack = []
-            while head:
-                stack.append(head.val)
-                head = head.next
-            return stack
+        def summer(node):
+            sum_ = 0
+            cur = node
 
-        stack1 = list_to_stack(l1)
-        stack2 = list_to_stack(l2)
+            while cur:
+                sum_ = sum_ * 10 + cur.val
+                cur = cur.next
+            return sum_
 
-        head = None
+        num1 = summer(l1)
+        num2 = summer(l2)
 
-        carry = 0
-        while stack1 or stack2 or carry != 0:
-            sum_ = carry
-            if stack1: sum_ += stack1.pop()
-            if stack2: sum_ += stack2.pop()
+        total = num1 + num2
 
-            newNode = ListNode(sum_ % 10)
-            newNode.next = head
-            head = newNode
+        dummy = ListNode(0)
+        cur = dummy
 
-            carry = sum_ // 10
+        for num in str(total):
+            cur.next = ListNode(num)
+            cur = cur.next
 
-        return head
+        return dummy.next
+
+
+        # OPTION 2
+        
+        # def getNumbers(node):
+        #     nums = []
+        #     cur = node
+
+        #     while cur:
+        #         nums.append(cur.val)
+        #         cur = cur.next
+
+        #     return nums
+
+        # list1 = getNumbers(l1)
+        # list2 = getNumbers(l2)
+
+        # carry = 0
+        # head = None
+
+        # while list1 or list2 or carry != 0:
+        #     sum_ = carry
+        #     if list1: sum_ += list1.pop()
+        #     if list2: sum_ += list2.pop()
+
+        #     newNode = ListNode(sum_ % 10)
+        #     newNode.next = head
+        #     head = newNode
+
+        #     carry = sum_ // 10
+
+        # return head
+        
 
 
 
