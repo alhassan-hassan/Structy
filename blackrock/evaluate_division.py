@@ -1,3 +1,39 @@
+# MINE
+class Solution:
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        bodmas = collections.defaultdict(dict)
+        res = []
+        
+        for i in range(len(equations)):
+            first, second = equations[i]
+            bodmas[first][second] = values[i]
+            bodmas[second][first] = 1 / values[i]
+
+        def dfs(query, visited):
+            x, y = query
+
+            if x not in bodmas or y not in bodmas:
+                return -1
+
+            if y in bodmas[x]:
+                return bodmas[x][y]
+
+            for neighbour in bodmas[x]:
+                if neighbour not in visited:
+                    visited.add(neighbour)
+                    nQuery = [neighbour, y]
+                    tempt = dfs(nQuery, visited)
+
+                    if tempt != -1:
+                        return tempt * bodmas[x][neighbour]
+
+            return -1
+
+        for query in queries:
+            res.append(dfs(query, set()))
+
+        return res
+
 import collections
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
