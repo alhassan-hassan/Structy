@@ -1,49 +1,40 @@
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
-        """
-        d e e e d b b c c c b d a a
-        
-        [d, ]
-        """
-        if len(s) < k: return s
-        
-        stack = []
-        
-        for char in s:
-            if len(stack) == 0 or stack[-1][0] != char:
-                stack.append((char, 1))
-            elif char == stack[-1][0]:
-                stack.append((char, stack[-1][1] + 1))
-                
-            if stack[-1][1] == k:
-                for i in range(k):
-                    stack.pop()
-        
-        return "".join([x[0] for x in stack])
+        tempt = []
+        for i in range(len(s)):
+            if tempt and s[i] == tempt[-1][0]:
+                tempt[-1][1] += 1
+                if tempt[-1][1] == k:
+                    tempt.pop()
+            else:
+                tempt.append([s[i], 1])
+                    
+        return ''.join(key * val for key, val in tempt)
+
 
 
 
 # BETTER WAY
-        if len(s) < k: return s
+        # if len(s) < k: return s
             
-        tempt = s
-        stack = []
+        # tempt = s
+        # stack = []
         
-        P1 = 0
+        # P1 = 0
         
-        while p1 < len(tempt):
-            if p1 == 0 or tempt[p1] == tempt[p1-1]:
-                stack.append(1)
-                p1 += 1
-            else:
-                last = stack.pop() + 1
-                stack.append(last)
+        # while p1 < len(tempt):
+        #     if p1 == 0 or tempt[p1] == tempt[p1-1]:
+        #         stack.append(1)
+        #         p1 += 1
+        #     else:
+        #         last = stack.pop() + 1
+        #         stack.append(last)
                 
-                if last == k:
-                    tempt = tempt[0: p1 - k + 1] + tempt[p1 + 1 : ]
-                    p1 = p1 - k + 1
+        #         if last == k:
+        #             tempt = tempt[0: p1 - k + 1] + tempt[p1 + 1 : ]
+        #             p1 = p1 - k + 1
                     
-        return tempt
+        # return tempt
                 
                 
             
