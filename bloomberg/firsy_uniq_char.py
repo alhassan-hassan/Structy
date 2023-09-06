@@ -26,3 +26,14 @@ class Solution:
             if count[ch] == 1:
                 return idx     
         return -1
+    
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        counted = Counter(s)
+
+        for ind, ch in enumerate(s):
+            if counted[ch] == 1:
+                return ind
+
+        return -1
+        
