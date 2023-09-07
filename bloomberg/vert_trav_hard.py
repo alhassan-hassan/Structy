@@ -1,10 +1,10 @@
 # Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-from collections import OrderedDict
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution:
     def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
         node_list = []
@@ -22,9 +22,7 @@ class Solution:
         BFS(root)
 
         # step 2). sort the global node list, according to the coordinates
-        print(node_list)
         node_list.sort()
-        print(node_list)
 
         # step 3). retrieve the sorted results partitioned by the column index
         ret = OrderedDict()
