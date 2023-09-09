@@ -20,3 +20,9 @@ class Solution:
  
         return count
         
+
+"""
+Time Complexity: O(n^2). For each of the n people, we will walk through (up to) n-1 entries in their preferences. Therefore, n * (n-1) approaches O(n^2).
+
+Space Complexity: O(n^2). We will have n entries in the dictionary we create, and each one of those can have (up to) n-1 entries in the set. Therefore, n * (n-1) approaches O(n^2).
+"""
