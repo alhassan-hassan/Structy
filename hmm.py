@@ -1,48 +1,48 @@
-# important module
-import math
+# # important module
+# import math
 
-def doTheyBelong(x1, y1, x2, y2, x3, y3, xp, yp, xq, yq):
-    # area of triangle
-    def area(x1, y1, x2, y2, x3, y3):
-        return abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0)
+# def doTheyBelong(x1, y1, x2, y2, x3, y3, xp, yp, xq, yq):
+#     # area of triangle
+#     def area(x1, y1, x2, y2, x3, y3):
+#         return abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0)
 
-    # function isInside to check the point
-    def isInside(x1, y1, x2, y2, x3, y3, p1, p2):
-        # Calculate area of triangle ABC
-        A = area(x1, y1, x2, y2, x3, y3)
+#     # function isInside to check the point
+#     def isInside(x1, y1, x2, y2, x3, y3, p1, p2):
+#         # Calculate area of triangle ABC
+#         A = area(x1, y1, x2, y2, x3, y3)
 
-        # Calculate area of triangle PBC
-        A1 = area(x2, y2, x3, y3, p1, p2)
+#         # Calculate area of triangle PBC
+#         A1 = area(x2, y2, x3, y3, p1, p2)
 
-        # Calculate area of triangle PAC
-        A2 = area(x1, y1, x3, y3, p1, p2)
+#         # Calculate area of triangle PAC
+#         A2 = area(x1, y1, x3, y3, p1, p2)
 
-        # Calculate area of triangle PAB
-        A3 = area(x2, y2, x1, y1, p1, p2)
+#         # Calculate area of triangle PAB
+#         A3 = area(x2, y2, x1, y1, p1, p2)
 
-        # Check if sum of A1, A2, and A3 is same as A
-        return A == A1 + A2 + A3
+#         # Check if sum of A1, A2, and A3 is same as A
+#         return A == A1 + A2 + A3
 
-    def length(x1, y1, x2, y2):
-        distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
-        return distance
-
-
-    ab = length(x1, y1, x2, y2)
-    bc = length(x2, y2, x3, y3)
-    ac = length(x1, y1, x3, y3)
+#     def length(x1, y1, x2, y2):
+#         distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+#         return distance
 
 
-    if not (ab + bc > ac and bc + ac > ab and ab + ac > bc):
-        return 0
-    elif isInside(x1, y1, x2, y2, x3, y3, xp, yp,) and isInside(x1, y1, x2, y2, x3, y3, xq, yq,):
-        return 3
-    elif isInside(x1, y1, x2, y2, x3, y3, xp, yp,):
-        return 1
-    elif isInside(x1, y1, x2, y2, x3, y3, xq, yq,):
-        return 2
-    else:
-        return 4
+#     ab = length(x1, y1, x2, y2)
+#     bc = length(x2, y2, x3, y3)
+#     ac = length(x1, y1, x3, y3)
+
+
+#     if not (ab + bc > ac and bc + ac > ab and ab + ac > bc):
+#         return 0
+#     elif isInside(x1, y1, x2, y2, x3, y3, xp, yp,) and isInside(x1, y1, x2, y2, x3, y3, xq, yq,):
+#         return 3
+#     elif isInside(x1, y1, x2, y2, x3, y3, xp, yp,):
+#         return 1
+#     elif isInside(x1, y1, x2, y2, x3, y3, xq, yq,):
+#         return 2
+#     else:
+#         return 4
 
 
 
@@ -122,3 +122,25 @@ def doTheyBelong(x1, y1, x2, y2, x3, y3, xp, yp, xq, yq):
 
 # print("Correlation coefficient:", correlation_coefficient)
 
+
+
+def counterfeit(arr):
+    if len(arr) == 1:
+        return arr[0]
+
+    hi = len(arr)
+
+    mid = hi  // 2
+    odd = None
+
+    if hi % 2 == 1:
+        odd = arr[mid]
+
+    lower, upper = arr[0 : mid], arr[mid : hi + 1]
+    if sum(lower) == sum(upper):
+        return odd
+    else:
+        return counterfeit(lower) if sum(lower) < sum(upper) else counterfeit(upper)
+
+    
+print(counterfeit([3, 3, 3, 2, 3, 3, 3, 3]))
