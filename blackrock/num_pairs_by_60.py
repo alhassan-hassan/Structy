@@ -4,22 +4,19 @@ class Solution:
 
         for num in time:
             if num % 60 == 0:
-                count += mapp[0]
-            
+                count += mapp[0]            
             else:
                 comp = 60 - num % 60
-                count += mapp[comp]
-            
+                count += mapp[comp]        
             mapp[num % 60] += 1
 
         return count
 
 
 
-
 """
 TIME: O(N)
-SPACE: 0(1)
+SPACE: 0(N)
 """
 
         
