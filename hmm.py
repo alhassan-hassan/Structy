@@ -1,3 +1,57 @@
+from sortedcontainers import SortedDict
+
+class Leaderboard:
+
+    def __init__(self):
+        # Dictionary to store each player's score
+        self.board = {}
+        # SortedDict to store scores in descending order with counts of each score
+        self.sortedScores = SortedDict()
+
+    def addScore(self, playerId: int, score: int) -> None:
+        # Check if player already has a score
+        if playerId in self.board:
+            oldScore = self.board[oldScore]
+            count = self.sortedScores.get(-oldScore)
+            if count == 1:
+                del self.sortedScores[-oldScore]
+            else:
+                self.sortedScores[-oldScore]-= 1
+            
+            newScore = score + oldScore
+            self.board[playerId] += score
+            self.sortedScores[-oldScore] = self.sortedScores.get(-newScore, 0) + 1
+        
+        else:
+            self.board[playerId] = score
+            self.sortedScores[-score] = self.sortedScores.get(-score, 0) + 1
+
+    def top(self, K: int) -> int:
+        count = total = 0
+        for score, count in self.sortedScores.items:
+            for i in range(count):
+                total -= score
+                count += 1
+                if count == K:
+                    return total
+        return total
+
+               
+
+    def reset(self, playerId: int) -> None:
+        if playerId in self.sortedScores:
+            score = self.board[playerId]
+            count = self.sortedScores[-score]
+            if count == 1:
+                del self.sortedScores[-score]
+            else:
+                self.sortedScores[-score] -= 1
+                
+            del self.board[playerId]    
+
+        # Reset player's score in board and sortedScores
+        
+
 # # # important module
 # # import math
 
@@ -146,7 +200,7 @@
 # print(counterfeit([3, 3, 3, 1, 3, 3, 3, 3,3]))
 
 
-def sum (a, b):
-    return a + b
+# def sum (a, b):
+#     return a + b
 
-print(sum(2,-10))
+# print(sum(2,-10))
