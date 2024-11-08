@@ -28,3 +28,46 @@ class Solution:
 COMPLEXITIES: TIME : O(max(n, m))
               SPACE: O(m)
 """
+
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        memo = {}
+
+        for char in s:
+            if char in memo:
+                memo[char] += 1
+            else:
+                memo[char] = 1
+
+        count = 1
+
+        for char in t:
+            if char in memo and memo[char] > 0:
+                memo[char] -= 1
+
+        return sum(memo.values())
+
+
+
+
+
+
+# class Solution:
+#     def minSteps(self, s: str, t: str) -> int:
+#         memo1 = defaultdict(int)
+
+#         for char in s:
+#             memo1[char] += 1
+
+#         count = 0
+#         for char in t:
+#             if char in memo1 and memo1[char]:
+#                 memo1[char] -= 1
+
+#         return sum(memo1.values())
+
+# """
+#     COMPLEXITIES: TIME : O(max(n, m))
+#     SPACE: O(m)
+
+# """
