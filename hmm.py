@@ -1,3 +1,7 @@
+
+for i in range(5 , 1, -1):
+        print(i)
+
 from sortedcontainers import SortedDict
 
 class Leaderboard:
@@ -46,7 +50,7 @@ class Leaderboard:
                 del self.sortedScores[-score]
             else:
                 self.sortedScores[-score] -= 1
-                
+
             del self.board[playerId]    
 
         # Reset player's score in board and sortedScores

@@ -42,3 +42,47 @@ TIME: O(N^2) + 0(NLOGN) =  O(N^2)
 SPACE: 0(1) -> HEAP SORT INCURS NO EXTRA SPACE
 
 """
+
+
+
+class Solution:
+    def triangleNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        count = 0
+        n = len(nums)
+        output = 0
+
+        for i in range(n - 1, 1, -1):
+            left = 0
+            right = i - 1
+
+            while left < right:
+                if nums[left] + nums[right] > nums[i]:
+                    output += right - left
+                    right -= 1
+                else:
+                    left += 1
+
+        return output
+
+        # for k in range(len(nums) - 1, 1, -1):
+        #     i = 0
+        #     j = k - 1
+
+        #     while i < j:
+        #         if nums[i] + nums[j] > nums[k]:
+        #             count += j - i
+        #             j -= 1
+        #         else:
+        #             i += 1
+
+        # return count
+
+
+
+"""
+
+TIME: O(N^2) + 0(NLOGN) =  O(N^2)
+SPACE: 0(1) -> HEAP SORT INCURS NO EXTRA SPACE
+
+"""
